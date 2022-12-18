@@ -33,5 +33,6 @@ Cách sử dụng:
   + Dùng git để clone project về máy EC2:
     ![image](https://user-images.githubusercontent.com/88545526/208293885-e1574513-83b9-428f-a72c-eecb4cd44cd3.png)
   + Cài đặt và chạy từng docker trên máy bằng lệnh:
+  
     docker run -p <cổng của instance> <tên instance>
     
