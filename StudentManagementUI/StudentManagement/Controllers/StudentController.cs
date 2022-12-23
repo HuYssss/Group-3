@@ -28,6 +28,7 @@ namespace StudentManagement.Controllers
         private readonly IHttpClientFactory _clientFactory;
         private int orderBy = 0;
         private string url = "http://ec2-52-87-54-46.compute-1.amazonaws.com:8080";
+        public static List<Student> listStudent = new List<Student>();
 
         public IEnumerable<Student> students { get; set; }
 

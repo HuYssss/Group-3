@@ -47,8 +47,8 @@
 
         <div class="buttons">
             <div class="upload-button">
-                <div class="label">Click me!</div>
-                <input id="files" name="files" type="file" size="1" />
+                <div class="label">URL of Avatar</div>
+                <input id="file" name="files" type="text" size="1" style="width:100%"/>
                 <br />
                 <span id="errfile" class="text-danger"></span>
             </div>
@@ -58,9 +58,14 @@
         <button type="reset" class="btn btn-light">Reset</button>
         @*asp-action="AddNewStudent onclick="uploadFiles('files')" <form id="form" name="form" action="/uploader"
             enctype="multipart/form-data" method="post"> </form>"*@
-        <button type="button" runat="server" class="btn btn-primary" onclick="uploadFiles('files')">Confirm </button>
+        <button type="button" runat="server" class="btn btn-primary" onclick="uploadFiles('files')"> Confirm </button>
         <script>
 
+            function addData()
+            {
+                
+            }
+1
             function validation(student, file) {
                 var result1 = true, result2 = true, result3 = true, result4 = true;
 
@@ -101,6 +106,7 @@
                 var classz = $('#classz').val()
                 var gpa = $('#gpa').val()
                 var sex = $('#sex').val()
+                var file = $('#file').val()
 
 
                 var files = input.files;
@@ -109,42 +115,44 @@
                     "classname": classz,
                     "sex": sex,
                     "gpa": parseFloat(gpa)
+                    "file": file
                 }
-                console.log("GPA", student.gpa)
-                console.log("FILE:", files[0])
+                StudentController.listStudent.Add(student);
+                //console.log("GPA", student.gpa)
+                //console.log("FILE:", files[0])
 
-                var isValid = validation(student, files[0])
-                if (!isValid) {
-                    return;
-                }
+                //var isValid = validation(student, files[0])
+                //if (!isValid) {
+                //    return;
+                //}
 
 
 
-                formData.append('student', new Blob([JSON.stringify(student)], { type: "application/json" }));
-                formData.append('file', files[0]);
+                //formData.append('student', new Blob([JSON.stringify(student)], { type: "application/json" }));
+                //formData.append('file', files[0]);
 
-                console.log("STUDENT", student)
-                $.ajax({
-                    type: "POST",
+                //console.log("STUDENT", student)
+                //$.ajax({
+                //    type: "POST",
 
-                    url: 'http://ec2-52-87-54-46.compute-1.amazonaws.com:8080/student/add',
+                //    url: 'http://ec2-52-87-54-46.compute-1.amazonaws.com:8080/student/add',
 
-                    data: formData,
-                    dataType: "json",
-                    processData: false,
-                    contentType: false,
+                //    data: formData,
+                //    dataType: "json",
+                //    processData: false,
+                //    contentType: false,
 
-                    error: function (result) {
-                        alert("error");
-                        console.log(result);
-                    },
-                    success: function (result) {
+                //    error: function (result) {
+                //        alert("error");
+                //        console.log(result);
+                //    },
+                //    success: function (result) {
 
-                        console.log("Host:", window.location.host)
-                        window.location.href = window.location.protocol + "//" + window.location.host + "/Student"
+                //        console.log("Host:", window.location.host)
+                //        window.location.href = window.location.protocol + "//" + window.location.host + "/Student"
 
-                    }
-                });
+                //    }
+                //});
             }
 
 
